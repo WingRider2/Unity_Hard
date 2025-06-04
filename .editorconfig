@@ -1,0 +1,11 @@
+﻿root = true
+
+# 모든 C# 스크립트는 UTF-8 BOM 포함으로
+[*.cs]
+charset = utf-8-bom
+
+# (필요하다면) 다른 텍스트 파일도 UTF-8로 고정
+[*.{txt,json,shader}]
+charset = utf-8
+# CS0108: 멤버가 상속된 멤버를 숨깁니다. new 키워드가 없습니다.
+dotnet_diagnostic.CS0108.severity = suggestion
