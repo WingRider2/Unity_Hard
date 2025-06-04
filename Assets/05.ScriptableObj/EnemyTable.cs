@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemeTable", menuName = "Scriptable Objects/EnemeTable")]
-public class EnemeTable : BaseTable<EnemeData>
+public class EnemyTable : BaseTable<EnemyData>
 {
     public override void CreateTable()
     {

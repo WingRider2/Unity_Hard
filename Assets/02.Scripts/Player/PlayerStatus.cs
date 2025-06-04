@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[SerializeField]
 public class PlayerStatus
 {
     public float CurHP;
@@ -9,7 +10,8 @@ public class PlayerStatus
     public float CurMP;
     public float MaxMP;
     public float Speed;
-    public float Exp;
+    public float curExp;
+    public float maxExp;
     public float CurStage;
     public float Gold;
 }

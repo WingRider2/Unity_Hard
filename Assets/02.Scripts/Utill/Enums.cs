@@ -7,7 +7,7 @@
     Dead ,
 }
 
-public enum EnemeType
+public enum EnemyType
 {
     None ,
     BaseCube,

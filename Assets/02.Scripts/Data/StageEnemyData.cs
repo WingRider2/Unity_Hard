@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class StageEnemeData
+public class StageEnemyData
 {
     public int Count;
-    public EnemeType[] Enemes;
+    public EnemyType[] Enemes;
 }

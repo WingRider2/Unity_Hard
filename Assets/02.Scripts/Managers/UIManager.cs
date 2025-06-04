@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageManager : Singleton<StageManager>
+public class UIManager : Singleton<UIManager>
 {
 
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class EnemeData
+public class EnemyData
 {
     public int ID;
     public string Name;

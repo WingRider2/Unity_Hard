@@ -9,7 +9,7 @@ public class StageData
     public string Name;
     public int ID;
 
-    public StageEnemeData EnemeData;
+    public StageEnemyData EnemeData;
 }
 
 
