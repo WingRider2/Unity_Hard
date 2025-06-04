@@ -7,3 +7,9 @@
     Dead ,
 }
 
+public enum EnemeType
+{
+    None ,
+    BaseCube,
+
+}
