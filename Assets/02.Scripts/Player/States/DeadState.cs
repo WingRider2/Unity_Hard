@@ -17,11 +17,11 @@ public class DeadState : IState
 
     public void PhysicsUpdate()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public PlayerState Update()
     {
-        throw new System.NotImplementedException();
+        return PlayerState.Idle;
     }
 }

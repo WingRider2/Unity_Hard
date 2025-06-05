@@ -8,7 +8,7 @@ public class StateMachine
 
     public void ChangeState(IState state)
     {
-        currnentState.Exit();
+        if(currnentState != null) currnentState.Exit();
         currnentState = state;
         currnentState.Enter();
     }

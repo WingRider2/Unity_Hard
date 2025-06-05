@@ -5,6 +5,7 @@
     Chase,
     Attack ,
     Dead ,
+    Fail,//실패
 }
 
 public enum EnemyType

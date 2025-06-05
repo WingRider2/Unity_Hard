@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class ChaseState : IState
 {
-    //적탐색 및 이동,
+    
+    public PlayerController Controller;
+    private TargetingSystem targetingSystem;
+
+    public ChaseState(PlayerController controller)
+    {
+        Controller = controller;
+        targetingSystem = Controller.transform.GetComponent<TargetingSystem>();
+    }
     public void Enter()
     {
-        Debug.Log("Enter ChaseState");
+        Debug.Log("Enter ChaseState");        
     }
 
     public void Exit()
@@ -16,11 +24,23 @@ public class ChaseState : IState
     }
     public void PhysicsUpdate()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public PlayerState Update()
     {
-        throw new System.NotImplementedException();
+        GameObject target = targetingSystem.FindTarget();
+        if (target == null)
+        {
+            return PlayerState.Idle;
+        }
+
+        Controller.target = target.transform;
+
+        if (!((target.transform.position - Controller.transform.position).magnitude > Controller.AttackRange))
+        {
+            return PlayerState.Attack;
+        }
+         return PlayerState.None;
     }
 }
