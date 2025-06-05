@@ -16,7 +16,7 @@ public class TargetingSystem : MonoBehaviour
 
         foreach (var enemy in Enemys)
         {
-            float dist = Vector2.Distance(transform.position, enemy.transform.position);
+            float dist = Vector3.Distance(transform.position, enemy.transform.position);
             if (dist < minDist)
             {
                 minDist = dist;

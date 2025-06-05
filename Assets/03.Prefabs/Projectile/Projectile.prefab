@@ -146,3 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a03a8a06e9e51148adb6e0df46f7492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolType: 0
+  poolSize: 10
+  damage: 10
