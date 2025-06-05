@@ -14,3 +14,9 @@ public enum EnemyType
     BaseCube,
 
 }
+
+public enum PoolType
+{
+    Projectile,
+}
+

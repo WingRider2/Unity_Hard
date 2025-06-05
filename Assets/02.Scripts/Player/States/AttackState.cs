@@ -29,4 +29,14 @@ public class AttackState : IState
     {
         return PlayerState.Chase;
     }
+
+    IEnumerator Attack()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Controller.attackSpeed);
+
+        }
+        
+    }
 }
