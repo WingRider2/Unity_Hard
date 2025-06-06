@@ -20,3 +20,9 @@ public enum PoolType
     Projectile,
 }
 
+public enum Tag
+{
+    Player,
+    Enemy,
+}
+

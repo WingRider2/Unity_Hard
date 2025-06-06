@@ -15,7 +15,8 @@ public class ChaseState : IState
     }
     public void Enter()
     {
-        Debug.Log("Enter ChaseState");        
+        Debug.Log("Enter ChaseState");
+        Controller.curtarget = null;
     }
 
     public void Exit()
@@ -36,10 +37,26 @@ public class ChaseState : IState
         }
 
         Controller.target = target.transform;
-
-        if (!((target.transform.position - Controller.transform.position).magnitude > Controller.AttackRange))
+        Vector3 lookDir = target.transform.position - Controller.transform.position;
+        if (!(lookDir.magnitude > Controller.attackRange))
         {
-            return PlayerState.Attack;
+            Ray ray = new Ray(Controller.transform.position , lookDir.normalized);
+            RaycastHit hit;
+            if(Physics.Raycast(ray ,out hit))
+            {
+                if (!hit.transform.CompareTag(Tag.Enemy.ToString()))
+                {
+                    Controller.agent.SetDestination(Controller.transform.right);
+                    Quaternion lookRotation = Quaternion.LookRotation(lookDir);
+                    Controller.transform.rotation = Quaternion.Slerp(Controller.transform.rotation , lookRotation,Time.deltaTime);
+                }
+                else
+                {
+                    Controller.curtarget = target.transform;
+                    return PlayerState.Attack;
+                }
+            }
+
         }
          return PlayerState.None;
     }

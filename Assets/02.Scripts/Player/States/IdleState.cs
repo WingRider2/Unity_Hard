@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class IdleState : IState
 {
+
+    public PlayerController Controller;
+    private TargetingSystem targetingSystem;
+
+    public IdleState(PlayerController controller)
+    {
+        Controller = controller;
+        targetingSystem = Controller.transform.GetComponent<TargetingSystem>();
+    }
+
     //대기중 다음 행동 고려
     public void Enter()
     {
@@ -22,6 +32,15 @@ public class IdleState : IState
 
     public PlayerState Update()
     {
-        return PlayerState.Chase;
+        GameObject target = targetingSystem.FindTarget();
+        if (target == null)
+        {
+            return PlayerState.None;
+        }
+        else
+        {
+            return PlayerState.Chase;
+        }
+        
     }
 }

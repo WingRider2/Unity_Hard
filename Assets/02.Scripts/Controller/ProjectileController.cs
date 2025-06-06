@@ -30,10 +30,11 @@ public class ProjectileController : MonoBehaviour,IPoolObject
         if(collision.transform.TryGetComponent<EnemyController>(out var enemyController))
         {
             enemyController.onHit(damage);
+            PoolManager.Instance.ReturnObject(this);
         }
     }
 
-    public void Launch(Vector2 direction, float speed)
+    public void Launch(Vector3 direction, float speed)
     {
         rigid.velocity = direction.normalized * speed;
     }

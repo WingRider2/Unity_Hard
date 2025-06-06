@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttackState : IState
 {
     public PlayerController Controller;
+
+    private Coroutine attact;
     public AttackState(PlayerController controller)
     {
         Controller = controller;
@@ -12,11 +15,15 @@ public class AttackState : IState
     public void Enter()
     {
         Debug.Log("Enter AttackState");
+
+        attact = Controller.StartCoroutine(Attack());
     }
 
     public void Exit()
     {
         Debug.Log("Exit AttackState");
+        Controller.StopCoroutine(attact);
+        attact = null;
     }
 
 
@@ -27,7 +34,15 @@ public class AttackState : IState
 
     public PlayerState Update()
     {
-        return PlayerState.Chase;
+        if (Controller.target == null)
+        {
+            return PlayerState.Idle;
+        }
+        if (Controller.curtarget == null)
+        {
+            return PlayerState.Chase;
+        }
+        return PlayerState.None;
     }
 
     IEnumerator Attack()
@@ -35,6 +50,12 @@ public class AttackState : IState
         while (true)
         {
             yield return new WaitForSeconds(Controller.attackSpeed);
+            GameObject poolGo = PoolManager.Instance.GetObject(PoolType.Projectile);
+            poolGo.transform.position = Controller.transform.position + (Controller.curtarget.position - Controller.transform.position).normalized;
+            if (poolGo.transform.TryGetComponent<ProjectileController>(out var projectileController))
+            {
+                projectileController.Launch((Controller.curtarget.position-Controller.transform.position).normalized, Controller.projectileSpeed);
+            }
 
         }
         

@@ -13,18 +13,19 @@ public class PlayerController : MonoBehaviour
     private AttackState attackState;
     private ChaseState chaseState;
     private DeadState deadState;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     public Transform target;
-        
+    public Transform curtarget;
 
+    public Vector3 lookRot;
     public float moveSpeed;
     public float attackSpeed;
-    public float AttackRange;
-
+    public float attackRange;
+    public float projectileSpeed;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = AttackRange;
+        agent.stoppingDistance = attackRange;
     }
     // Start is called before the first frame update
     void Start()
@@ -32,17 +33,18 @@ public class PlayerController : MonoBehaviour
 
         stateMachine = new StateMachine();
 
-        idleState = new IdleState();
+        idleState = new IdleState(this);
         attackState = new AttackState(this);
         chaseState = new ChaseState(this);
         deadState = new DeadState();
 
-        stateMachine.ChangeState(idleState);
+        stateMachine.ChangeState(chaseState);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(curtarget != null ) Debug.Log(curtarget.name);
         PlayerState playerState =  stateMachine.Update();
         switch (playerState)
         {
@@ -77,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        agent.SetDestination(target.position);
+        if(target !=null) agent.SetDestination(target.position);
     }
     void Attack()
     {

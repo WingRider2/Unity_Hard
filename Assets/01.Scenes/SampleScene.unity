@@ -560,9 +560,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3012797805654163241, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8308034211235348905, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy4
       objectReference: {fileID: 0}
     - target: {fileID: 8906840581069682864, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1137,9 +1141,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3012797805654163241, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8308034211235348905, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy3
       objectReference: {fileID: 0}
     - target: {fileID: 8906840581069682864, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1673,10 +1681,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2640b7fd992074a4eae7041ac336fd8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
   target: {fileID: 0}
+  curtarget: {fileID: 0}
+  lookRot: {x: 0, y: 0, z: 0}
   moveSpeed: 1
   attackSpeed: 1
-  AttackRange: 3
+  attackRange: 3
+  projectileSpeed: 1
 --- !u!114 &1417712601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1703,7 +1715,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1756,9 +1768,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3012797805654163241, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8308034211235348905, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy2
       objectReference: {fileID: 0}
     - target: {fileID: 8906840581069682864, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2434,7 +2450,7 @@ GameObject:
   - component: {fileID: 1861599193}
   - component: {fileID: 1861599192}
   m_Layer: 0
-  m_Name: PoolManager
+  m_Name: '@PoolManager'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2517,7 +2533,7 @@ GameObject:
   - component: {fileID: 2015217359}
   - component: {fileID: 2015217358}
   m_Layer: 0
-  m_Name: ObstacleManager
+  m_Name: '@ObstacleManager'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2546,37 +2562,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015217357}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2060504369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2060504370}
-  m_Layer: 0
-  m_Name: Managers-------------
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2060504370
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2060504369}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -2663,7 +2648,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8308034211235348905, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy1
       objectReference: {fileID: 0}
     - target: {fileID: 8906840581069682864, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2723,6 +2708,5 @@ SceneRoots:
   - {fileID: 2119001274}
   - {fileID: 806472505}
   - {fileID: 1624082709}
-  - {fileID: 2060504370}
   - {fileID: 2015217359}
   - {fileID: 1861599193}
