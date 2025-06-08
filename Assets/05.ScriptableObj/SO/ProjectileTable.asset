@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60296daa5cb331469e155395580df9f, type: 3}
   m_Name: ProjectileTable
   m_EditorClassIdentifier: 
+  dataList:
+  - Name: "\uAE30\uBCF8\uBC1C\uC0AC"
+    ID: 1
+    Damage: 10
+    UpgradeDamage: 10
+    UpgradePrice: 100

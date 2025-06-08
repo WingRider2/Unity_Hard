@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-public class TableManager : MonoBehaviour
+public class TableManager : Singleton<TableManager>
 {
     [SerializeField] List<ScriptableObject> tableList = new List<ScriptableObject>();
 

@@ -11,13 +11,16 @@ public class ProjectileController : MonoBehaviour,IPoolObject
     public PoolType PoolType => poolType;
     public int PoolSize => poolSize;
 
-    public float damage;
+    private ProjectileData _projectileData;
+    public int ProjectileID;
+    public int Upgrade=1; 
 
     Rigidbody rigid;
     PoolManager poolManager;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        _projectileData = TableManager.Instance.GetTable<ProjectileTable>().GetDataByID(ProjectileID);
     }
    
     void Start()
@@ -29,8 +32,8 @@ public class ProjectileController : MonoBehaviour,IPoolObject
     {
         if(collision.transform.TryGetComponent<EnemyController>(out var enemyController))
         {
-            enemyController.onHit(damage);
-            PoolManager.Instance.ReturnObject(this);
+            enemyController.onHit(_projectileData.Damage + _projectileData.UpgradeDamage* Upgrade);
+            poolManager.ReturnObject(this);
         }
     }
 

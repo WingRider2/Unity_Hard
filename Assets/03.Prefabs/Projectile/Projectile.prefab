@@ -148,4 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolType: 0
   poolSize: 10
-  damage: 10
+  ProjectileID: 1
+  Upgrade: 0
