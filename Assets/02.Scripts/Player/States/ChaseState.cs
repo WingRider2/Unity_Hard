@@ -44,11 +44,11 @@ public class ChaseState : IState
             RaycastHit hit;
             if(Physics.Raycast(ray ,out hit))
             {
+                Quaternion lookRotation = Quaternion.LookRotation(lookDir);
+                Controller.transform.rotation = Quaternion.Slerp(Controller.transform.rotation, lookRotation, Time.deltaTime);
                 if (!hit.transform.CompareTag(Tag.Enemy.ToString()))
                 {
-                    Controller.agent.SetDestination(Controller.transform.right);
-                    Quaternion lookRotation = Quaternion.LookRotation(lookDir);
-                    Controller.transform.rotation = Quaternion.Slerp(Controller.transform.rotation , lookRotation,Time.deltaTime);
+                    Controller.agent.SetDestination(Controller.transform.position + Controller.transform.right * 3f);
                 }
                 else
                 {

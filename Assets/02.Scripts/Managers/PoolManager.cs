@@ -111,7 +111,7 @@ public class PoolManager : Singleton<PoolManager>
 
     public void ReturnObject(IPoolObject obj, float returnTime = 0, UnityAction action = null)
     {
-        DelayedReturnObject(obj, returnTime, action);
+        StartCoroutine(DelayedReturnObject(obj, returnTime, action));
     }
 
     IEnumerator DelayedReturnObject(IPoolObject obj, float returnTime, UnityAction action)

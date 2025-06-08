@@ -1688,7 +1688,7 @@ MonoBehaviour:
   moveSpeed: 1
   attackSpeed: 1
   attackRange: 3
-  projectileSpeed: 1
+  projectileSpeed: 10
 --- !u!114 &1417712601
 MonoBehaviour:
   m_ObjectHideFlags: 0

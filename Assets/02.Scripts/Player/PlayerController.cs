@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(curtarget != null ) Debug.Log(curtarget.name);
         PlayerState playerState =  stateMachine.Update();
         switch (playerState)
         {
