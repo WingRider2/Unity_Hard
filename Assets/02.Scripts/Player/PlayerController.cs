@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private StateMachine stateMachine;
     private GameManager gameManager;
     private UIManager uiManager;
+    public PlayerStatus playerStatus;
 
     private IdleState idleState;
     private AttackState attackState;
@@ -22,11 +23,12 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 lookRot;    
 
-    public PlayerStatus playerStatus;
+    
 
 
     private void Awake()
     {
+        playerStatus = PlayerManager.Instance.runtimeStatus;
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = playerStatus.attackRange;
         agent.speed = playerStatus.speed;

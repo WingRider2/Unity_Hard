@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class UIManager : Singleton<UIManager>
 {
     private GameManager gameManager;
+    private PlayerStatus playerStatus;
 
     public TextMeshProUGUI Seed;
     public Button GameStart;
@@ -24,7 +25,7 @@ public class UIManager : Singleton<UIManager>
 
     private ObstacleManager obstacleManager;
 
-    public PlayerStatus playerStatus;
+    
 
     public Action reset;
 
@@ -32,6 +33,7 @@ public class UIManager : Singleton<UIManager>
     {
         obstacleManager = ObstacleManager.Instance;
         gameManager = GameManager.Instance;
+        playerStatus = PlayerManager.Instance.runtimeStatus;
 
         playerStatus.OnHPChanged += HPChanged;
         playerStatus.OnMPChanged += MPChanged;
