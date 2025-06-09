@@ -12,15 +12,17 @@ public class ObstacleManager : Singleton<ObstacleManager>
     public bool[,] isPlace = new bool[10,10];
     int obstacleCount;
 
+    public List<GameObject> gameObjects;
 
     void Start()
     {
         isPlace = new bool[width, height];
         obstacleCount = Random.Range(5, width * height / 10);
-        GenerateObstacle();
+        //GenerateObstacle();
+        gameObjects = new List<GameObject>();
     }
 
-    void GenerateObstacle()
+    public void GenerateObstacle()
     {
         for (int i = 0; i < obstacleCount; i++)
         {
@@ -29,13 +31,23 @@ public class ObstacleManager : Singleton<ObstacleManager>
             if(!isPlace[randx, randy])
             {
                 isPlace[randx, randy] = true;
-                Instantiate(wallPrefab, Ground.position + new Vector3(randx, 0, randy), Quaternion.identity, Ground);
+                gameObjects.Add(Instantiate(wallPrefab, Ground.position + new Vector3(randx, 0, randy), Quaternion.identity, Ground));
             }
             else
             {
                 i--;
                 continue;
             }
+        }
+    }
+    
+    public void ClearObstacle()
+    {
+        if (gameObjects.Count == 0) return;
+
+        foreach (var item in gameObjects)
+        {
+            Destroy(item);
         }
     }
 
