@@ -1161,7 +1161,7 @@ GameObject:
   - component: {fileID: 387713768}
   - component: {fileID: 387713767}
   m_Layer: 5
-  m_Name: TiltleText
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2038,6 +2038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 759991941}
+  - component: {fileID: 759991942}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -2068,6 +2069,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &759991942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759991940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8e700e726a98f4e8b586ce85561ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Inventory: {fileID: 735585107}
+  Status: {fileID: 1386367906}
+  TitleText: {fileID: 387713767}
+  SwitchButton: {fileID: 1189218657}
+  UpgradeButton: {fileID: 1128213996}
 --- !u!1 &768653712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,7 +2098,7 @@ GameObject:
   - component: {fileID: 768653715}
   - component: {fileID: 768653714}
   m_Layer: 5
-  m_Name: GoldImg
+  m_Name: GoldIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3269,6 +3287,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222169691}
   m_CullTransparentMesh: 1
+--- !u!1 &1264570979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264570981}
+  - component: {fileID: 1264570980}
+  m_Layer: 0
+  m_Name: '@GameManager'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1264570980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264570979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474527e9849fe564ab6f3d42121f2525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1264570981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264570979}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1285332509
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,7 +3749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3714,8 +3776,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4159,10 +4221,6 @@ MonoBehaviour:
   target: {fileID: 0}
   curtarget: {fileID: 0}
   lookRot: {x: 0, y: 0, z: 0}
-  moveSpeed: 1
-  attackSpeed: 1
-  attackRange: 3
-  projectileSpeed: 10
   playerStatus: {fileID: 11400000, guid: 87f02bc4ab38cf34b8a8f410a1e8969f, type: 2}
 --- !u!114 &1417712601
 MonoBehaviour:
@@ -4508,7 +4566,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -5174,6 +5232,7 @@ MonoBehaviour:
   EXPFill: {fileID: 1503884464}
   Stage: {fileID: 504050269}
   Gold: {fileID: 1384501020}
+  playerStatus: {fileID: 11400000, guid: 87f02bc4ab38cf34b8a8f410a1e8969f, type: 2}
 --- !u!1 &1646132843
 GameObject:
   m_ObjectHideFlags: 0
@@ -5855,6 +5914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolObjectList:
   - {fileID: 2030604202315544289, guid: 35a28c92d1cb7fb40a804a188098a177, type: 3}
+  - {fileID: 3931755809484443582, guid: 1d30c6b93b8b34748a9b1b9a58930c9b, type: 3}
 --- !u!4 &1861599193
 Transform:
   m_ObjectHideFlags: 0
@@ -6013,8 +6073,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 25
   height: 25
-  wallPrefab: {fileID: 3931755809484443582, guid: 1d30c6b93b8b34748a9b1b9a58930c9b, type: 3}
   Ground: {fileID: 1826013270}
+  obstacleCount: 0
   gameObjects: []
 --- !u!4 &2015217359
 Transform:
@@ -6184,7 +6244,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1790790402654359537, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: HP
-      value: 100000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8308034211235348905, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: m_Name
@@ -6251,3 +6311,4 @@ SceneRoots:
   - {fileID: 2015217359}
   - {fileID: 1861599193}
   - {fileID: 1147096178}
+  - {fileID: 1264570981}

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a07df974c16b540bb9ee3015ba9ca8, type: 3}
   m_Name: PlayerStatus
   m_EditorClassIdentifier: 
-  CurHP: 100
-  MaxHP: 100
-  CurMP: 100
-  MaxMP: 100
-  Speed: 3.5
+  curHP: 100
+  maxHP: 100
+  curMP: 100
+  maxMP: 100
+  speed: 2.5
+  Level: 1
   curExp: 0
   maxExp: 100
-  CurStage: 1
-  Gold: 0
+  curStage: 1
   attackSpeed: 1
   attackRange: 3

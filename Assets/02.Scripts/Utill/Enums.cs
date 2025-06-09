@@ -18,6 +18,7 @@ public enum EnemyType
 public enum PoolType
 {
     Projectile,
+    Obstacle,
 }
 
 public enum Tag

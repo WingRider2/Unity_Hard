@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
@@ -8,6 +9,8 @@ using UnityEngine.InputSystem.XR;
 public class PlayerController : MonoBehaviour
 {
     private StateMachine stateMachine;
+    private GameManager gameManager;
+    private UIManager uiManager;
 
     private IdleState idleState;
     private AttackState attackState;
@@ -20,17 +23,23 @@ public class PlayerController : MonoBehaviour
     public Vector3 lookRot;    
 
     public PlayerStatus playerStatus;
+
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = playerStatus.attackRange;
-        agent.speed = playerStatus.Speed;
+        agent.speed = playerStatus.speed;
     }
     // Start is called before the first frame update
     void Start()
     {
 
         stateMachine = new StateMachine();
+        gameManager = GameManager.Instance;
+        uiManager = UIManager.Instance;
+
+        uiManager.reset += Reset;
 
         idleState = new IdleState(this);
         attackState = new AttackState(this);
@@ -43,6 +52,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            ChangedHP(-5);
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            ChangedMP(-5);
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            ChangedEXP(5);
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            ChangedStage();
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            ChangeGold(5000);
+        }
+
+
+        if (gameManager.IsPaused) return;
+
         PlayerState playerState =  stateMachine.Update();
         switch (playerState)
         {
@@ -79,8 +112,33 @@ public class PlayerController : MonoBehaviour
     {
         if(target !=null) agent.SetDestination(target.position);
     }
-    void Attack()
-    {
 
+    public void ChangedHP(float dmg)
+    {
+        playerStatus.ChangedHP(dmg);
+    }
+
+    public void ChangedMP(float mp)
+    {
+        playerStatus.ChangedMP(mp);
+    }
+
+    public void ChangedEXP(float exp)
+    {
+        playerStatus.ChangedEXP(exp);
+    }
+    public void ChangedStage()
+    {
+        playerStatus.ChangedStage();
+    }
+
+    public void ChangeGold(int gold)
+    {
+        playerStatus.ChangedGold(gold);
+    }
+
+    public void Reset()
+    {
+        gameObject.transform.position = Vector3.zero;
     }
 }

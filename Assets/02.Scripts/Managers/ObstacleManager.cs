@@ -1,42 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class ObstacleManager : Singleton<ObstacleManager>
 {
+    private PoolManager poolManager;
+
     public int width;
     public int height;
-    public GameObject wallPrefab;
     public Transform Ground;
 
     public bool[,] isPlace = new bool[10,10];
-    int obstacleCount;
-
+    public int obstacleCount;
     public List<GameObject> gameObjects;
 
     void Start()
     {
-        isPlace = new bool[width, height];
-        obstacleCount = Random.Range(5, width * height / 10);
-        //GenerateObstacle();
+        poolManager = PoolManager.Instance;
+        
         gameObjects = new List<GameObject>();
     }
 
     public void GenerateObstacle()
     {
+        isPlace = new bool[width, height];
+        obstacleCount = Random.Range(5, width * height / 10);
+
         for (int i = 0; i < obstacleCount; i++)
         {
             int randx = Random.Range(0, width);
-            int randy = Random.Range(0, height);
-            if(!isPlace[randx, randy])
+            int randy = Random.Range(0, height);            
+            
+            if (!isPlace[randx, randy])
             {
                 isPlace[randx, randy] = true;
-                gameObjects.Add(Instantiate(wallPrefab, Ground.position + new Vector3(randx, 0, randy), Quaternion.identity, Ground));
-            }
-            else
-            {
-                i--;
-                continue;
+                GameObject poolGo = poolManager.GetObject(PoolType.Obstacle);
+                poolGo.transform.position = Ground.position + new Vector3(randx, 0, randy);
+                poolGo.transform.rotation = Quaternion.identity;
+                gameObjects.Add(poolGo);
             }
         }
     }
@@ -47,8 +49,9 @@ public class ObstacleManager : Singleton<ObstacleManager>
 
         foreach (var item in gameObjects)
         {
-            Destroy(item);
+            item.GetComponent<ObstacleController>().Retrun();
         }
+        gameObjects.Clear();
     }
 
 }
