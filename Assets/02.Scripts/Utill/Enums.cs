@@ -17,7 +17,13 @@ public enum EnemyType
 
 public enum PoolType
 {
-    Projectile,
+    CommonProjectile,
+    UncommonProjectile,
+    RareProjectile,
+    EpicProjectile,
+    UniqueProjectile,
+    LegendaryProjectile,
+
     Obstacle,
 }
 

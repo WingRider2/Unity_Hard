@@ -12,5 +12,4 @@ public class InventoryController : MonoBehaviour
     public TextMeshProUGUI TitleText;
     public Button SwitchButton;
     public Button UpgradeButton;
-
 }

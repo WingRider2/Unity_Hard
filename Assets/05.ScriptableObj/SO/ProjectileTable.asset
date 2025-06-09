@@ -13,10 +13,45 @@ MonoBehaviour:
   m_Name: ProjectileTable
   m_EditorClassIdentifier: 
   dataList:
-  - Name: "\uAE30\uBCF8\uBC1C\uC0AC"
+  - Name: CommonProjectile
     ID: 1
+    Damage: 5
+    UpgradeDamage: 5
+    UpgradePrice: 100
+    UpgradeLevel: 0
+    projectileSpeed: 10
+  - Name: UncommonProjectile
+    ID: 2
     Damage: 10
     UpgradeDamage: 10
-    UpgradePrice: 100
+    UpgradePrice: 200
+    UpgradeLevel: 0
+    projectileSpeed: 10
+  - Name: RareProjectile
+    ID: 3
+    Damage: 20
+    UpgradeDamage: 20
+    UpgradePrice: 400
+    UpgradeLevel: 0
+    projectileSpeed: 10
+  - Name: EpicProjectile
+    ID: 4
+    Damage: 40
+    UpgradeDamage: 40
+    UpgradePrice: 800
+    UpgradeLevel: 0
+    projectileSpeed: 10
+  - Name: UniqueProjectile
+    ID: 5
+    Damage: 80
+    UpgradeDamage: 80
+    UpgradePrice: 1600
+    UpgradeLevel: 0
+    projectileSpeed: 10
+  - Name: LegendaryProjectile
+    ID: 6
+    Damage: 160
+    UpgradeDamage: 160
+    UpgradePrice: 3200
     UpgradeLevel: 0
     projectileSpeed: 10
