@@ -6,12 +6,14 @@ public class ChaseState : IState
 {
     
     public PlayerController Controller;
-    private TargetingSystem targetingSystem;
 
-    public ChaseState(PlayerController controller)
+
+    public GameObject target;
+
+    public ChaseState(PlayerController controller , GameObject target)
     {
         Controller = controller;
-        targetingSystem = Controller.transform.GetComponent<TargetingSystem>();
+        this.target = target;
     }
     public void Enter()
     {
@@ -30,13 +32,10 @@ public class ChaseState : IState
 
     public PlayerState Update()
     {
-        GameObject target = targetingSystem.FindTarget();
         if (target == null)
         {
             return PlayerState.Idle;
         }
-
-        Controller.target = target.transform;
         Vector3 lookDir = target.transform.position - Controller.transform.position;
         if (!(lookDir.magnitude > Controller.agent.stoppingDistance))
         {

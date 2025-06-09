@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour,IPoolObject
         if (HP <= 0)
         {
             PoolManager.Instance.ReturnObject(this);
+            PlayerManager.Instance.controller.Findtarget();
         }
     }
 }

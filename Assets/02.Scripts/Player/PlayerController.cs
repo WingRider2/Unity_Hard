@@ -12,13 +12,15 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     private UIManager uiManager;
     public PlayerStatus playerStatus;
+    private TargetingSystem targetingSystem;
+    
 
     private IdleState idleState;
     private AttackState attackState;
     private ChaseState chaseState;
     private DeadState deadState;
     public NavMeshAgent agent;
-    public Transform target;
+    public GameObject target;
     public Transform curtarget;
 
     public Vector3 lookRot;    
@@ -31,21 +33,20 @@ public class PlayerController : MonoBehaviour
         stateMachine = new StateMachine();
         gameManager = GameManager.Instance;
         uiManager = UIManager.Instance;
-
         uiManager.reset += Reset;
 
         idleState = new IdleState(this);
         attackState = new AttackState(this);
-        chaseState = new ChaseState(this);
+        chaseState = new ChaseState(this , target);
         deadState = new DeadState();
 
-        stateMachine.ChangeState(chaseState);
+        stateMachine.ChangeState(idleState);
 
-
+        targetingSystem = transform.GetComponent<TargetingSystem>();
         playerStatus = PlayerManager.Instance.runtimeStatus;
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = playerStatus.attackRange;
-        agent.speed = playerStatus.speed;
+        agent.speed = playerStatus.speed;        
     }
 
     // Update is called once per frame
@@ -107,11 +108,17 @@ public class PlayerController : MonoBehaviour
         if (stateMachine != null) stateMachine.PhysicsUpdate();
     }
 
+
     void Move()
     {
-        if(target !=null) agent.SetDestination(target.position);
+        if(target !=null) agent.SetDestination(target.transform.position);
     }
-
+    public void Findtarget()
+    {
+        target = targetingSystem.FindTarget();
+        curtarget = target.transform;
+        chaseState.target = target;
+    }
     public void ChangedHP(float dmg)
     {
         playerStatus.ChangedHP(dmg);

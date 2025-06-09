@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class IdleState : IState
 {
-
     public PlayerController Controller;
-    private TargetingSystem targetingSystem;
 
     public IdleState(PlayerController controller)
     {
         Controller = controller;
-        targetingSystem = Controller.transform.GetComponent<TargetingSystem>();
     }
 
     //대기중 다음 행동 고려
@@ -31,10 +28,10 @@ public class IdleState : IState
     }
 
     public PlayerState Update()
-    {
-        GameObject target = targetingSystem.FindTarget();
-        if (target == null)
+    {        
+        if (Controller.target == null)
         {
+            Controller.Findtarget();
             return PlayerState.None;
         }
         else

@@ -15,7 +15,6 @@ public class AttackState : IState
     public void Enter()
     {
         Debug.Log("Enter AttackState");
-
         attact = Controller.StartCoroutine(Attack());
     }
 
@@ -34,12 +33,9 @@ public class AttackState : IState
 
     public PlayerState Update()
     {
-        if (Controller.target == null)
+        if (!Controller.target.gameObject.activeInHierarchy)
         {
-            return PlayerState.Idle;
-        }
-        if (Controller.curtarget == null)
-        {
+            Controller.Findtarget();
             return PlayerState.Chase;
         }
         return PlayerState.None;

@@ -22,7 +22,7 @@ public class StageManager : Singleton<StageManager>
     }
     public void CreatStage()
     {
-        int RandNum = Random.Range(0,9);
+        int RandNum = Random.Range(1,9);
 
         for (int i = 0; i < RandNum; i++)
         {
@@ -35,14 +35,16 @@ public class StageManager : Singleton<StageManager>
         for (int i = 0; i < RandNum; i++)
         {
             obstacleSpawner[i].ClearObstacle();
+            obstacleSpawner[i].GenerateObstacle();            
+        }
+        surface.BuildNavMesh();
+        for (int i = 0; i < RandNum; i++)
+        {
             enemySpawners[i].ClearEnemy();
-
-            obstacleSpawner[i].GenerateObstacle();
             enemySpawners[i].GenerateEnemy();
             Enemys.AddRange(enemySpawners[i].enemys);
         }
 
-        surface.BuildNavMesh();
     }
 
     public void ResetStage()
