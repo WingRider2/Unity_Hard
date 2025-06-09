@@ -17,15 +17,14 @@ public class PlayerController : MonoBehaviour
     public Transform target;
     public Transform curtarget;
 
-    public Vector3 lookRot;
-    public float moveSpeed;
-    public float attackSpeed;
-    public float attackRange;
-    public float projectileSpeed;
+    public Vector3 lookRot;    
+
+    public PlayerStatus playerStatus;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = attackRange;
+        agent.stoppingDistance = playerStatus.attackRange;
+        agent.speed = playerStatus.Speed;
     }
     // Start is called before the first frame update
     void Start()

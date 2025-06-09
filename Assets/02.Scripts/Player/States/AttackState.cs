@@ -49,12 +49,12 @@ public class AttackState : IState
     {
         while (true)
         {
-            yield return new WaitForSeconds(Controller.attackSpeed);
+            yield return new WaitForSeconds(Controller.playerStatus.attackSpeed);
             GameObject poolGo = PoolManager.Instance.GetObject(PoolType.Projectile);
             poolGo.transform.position = Controller.transform.position + (Controller.curtarget.position - Controller.transform.position).normalized;
             if (poolGo.transform.TryGetComponent<ProjectileController>(out var projectileController))
             {
-                projectileController.Launch((Controller.curtarget.position-Controller.transform.position).normalized, Controller.projectileSpeed);
+                projectileController.Launch((Controller.curtarget.position-Controller.transform.position).normalized);
             }
 
         }

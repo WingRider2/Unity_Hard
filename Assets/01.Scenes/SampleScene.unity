@@ -4163,6 +4163,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackRange: 3
   projectileSpeed: 10
+  playerStatus: {fileID: 11400000, guid: 87f02bc4ab38cf34b8a8f410a1e8969f, type: 2}
 --- !u!114 &1417712601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5170,6 +5171,7 @@ MonoBehaviour:
   GameStart: {fileID: 1665480146}
   HPFill: {fileID: 1379352707}
   MPFill: {fileID: 1222169693}
+  EXPFill: {fileID: 1503884464}
   Stage: {fileID: 504050269}
   Gold: {fileID: 1384501020}
 --- !u!1 &1646132843
@@ -6013,6 +6015,7 @@ MonoBehaviour:
   height: 25
   wallPrefab: {fileID: 3931755809484443582, guid: 1d30c6b93b8b34748a9b1b9a58930c9b, type: 3}
   Ground: {fileID: 1826013270}
+  gameObjects: []
 --- !u!4 &2015217359
 Transform:
   m_ObjectHideFlags: 0
@@ -6179,6 +6182,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1790790402654359537, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
+      propertyPath: HP
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 8308034211235348905, guid: 9305ef194567a0945968ede7f02a5348, type: 3}
       propertyPath: m_Name
       value: Enemy1

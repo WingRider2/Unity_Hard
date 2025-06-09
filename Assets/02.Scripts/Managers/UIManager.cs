@@ -11,6 +11,7 @@ public class UIManager : Singleton<UIManager>
 
     public Image HPFill;
     public Image MPFill;
+    public Image EXPFill;
 
     public TextMeshProUGUI Stage;
     public TextMeshProUGUI Gold;

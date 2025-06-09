@@ -13,7 +13,7 @@ public class ProjectileController : MonoBehaviour,IPoolObject
 
     private ProjectileData _projectileData;
     public int ProjectileID;
-    public int Upgrade=1; 
+    
 
     Rigidbody rigid;
     PoolManager poolManager;
@@ -32,13 +32,14 @@ public class ProjectileController : MonoBehaviour,IPoolObject
     {
         if(collision.transform.TryGetComponent<EnemyController>(out var enemyController))
         {
-            enemyController.onHit(_projectileData.Damage + _projectileData.UpgradeDamage* Upgrade);
+            Debug.Log(_projectileData.GetCurDmg());
+            enemyController.onHit(_projectileData.GetCurDmg());
             poolManager.ReturnObject(this);
         }
     }
 
-    public void Launch(Vector3 direction, float speed)
+    public void Launch(Vector3 direction)
     {
-        rigid.velocity = direction.normalized * speed;
+        rigid.velocity = direction.normalized * _projectileData.projectileSpeed;
     }
 }

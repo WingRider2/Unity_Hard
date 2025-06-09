@@ -38,7 +38,7 @@ public class ChaseState : IState
 
         Controller.target = target.transform;
         Vector3 lookDir = target.transform.position - Controller.transform.position;
-        if (!(lookDir.magnitude > Controller.attackRange))
+        if (!(lookDir.magnitude > Controller.agent.stoppingDistance))
         {
             Ray ray = new Ray(Controller.transform.position , lookDir.normalized);
             RaycastHit hit;

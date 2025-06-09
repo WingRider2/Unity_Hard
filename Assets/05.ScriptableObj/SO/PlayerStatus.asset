@@ -9,14 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d60296daa5cb331469e155395580df9f, type: 3}
-  m_Name: ProjectileTable
+  m_Script: {fileID: 11500000, guid: 30a07df974c16b540bb9ee3015ba9ca8, type: 3}
+  m_Name: PlayerStatus
   m_EditorClassIdentifier: 
-  dataList:
-  - Name: "\uAE30\uBCF8\uBC1C\uC0AC"
-    ID: 1
-    Damage: 10
-    UpgradeDamage: 10
-    UpgradePrice: 100
-    UpgradeLevel: 0
-    projectileSpeed: 10
+  CurHP: 100
+  MaxHP: 100
+  CurMP: 100
+  MaxMP: 100
+  Speed: 3.5
+  curExp: 0
+  maxExp: 100
+  CurStage: 1
+  Gold: 0
+  attackSpeed: 1
+  attackRange: 3

@@ -13,4 +13,16 @@ public class ProjectileData
     public int Damage;
     public int UpgradeDamage;
     public int UpgradePrice;
+    public int UpgradeLevel;
+
+    public float projectileSpeed;
+    public void Upgrade()
+    {
+        UpgradeLevel++;
+    }
+
+    public float GetCurDmg()
+    {
+        return Damage + UpgradeDamage * UpgradeLevel;
+    }
 }

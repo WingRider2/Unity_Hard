@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "PlayerStatus", menuName = "Scriptable Objects/PlayerStatus")]
 [SerializeField]
-public class PlayerStatus
+public class PlayerStatus : ScriptableObject
 {
     public float CurHP;
     public float MaxHP;
@@ -14,4 +15,8 @@ public class PlayerStatus
     public float maxExp;
     public float CurStage;
     public float Gold;
+
+    public float attackSpeed;
+    public float attackRange;
+
 }
