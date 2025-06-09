@@ -7,8 +7,10 @@ public class TableManager : Singleton<TableManager>
     [SerializeField] List<ScriptableObject> tableList = new List<ScriptableObject>();
 
     private Dictionary<Type, ITable> tableDic = new Dictionary<Type, ITable>();
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         foreach (var tableObj in tableList)
         {
             if (tableObj is ITable table)

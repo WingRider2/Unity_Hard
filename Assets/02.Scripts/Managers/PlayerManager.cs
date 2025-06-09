@@ -8,8 +8,10 @@ public class PlayerManager : Singleton<PlayerManager>
     public PlayerStatus runtimeStatus;
 
     public PlayerController controller;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         runtimeStatus = Instantiate(originStatus);
         controller = FindAnyObjectByType<PlayerController>();
     }

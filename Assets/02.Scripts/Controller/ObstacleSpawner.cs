@@ -29,7 +29,7 @@ public class ObstacleSpawner : MonoBehaviour
 
 
         isPlace = new bool[width, height];
-        obstacleCount = Random.Range(5, width * height / 10);        
+        obstacleCount = Random.Range(5, width * height / 20);        
 
         for (int i = 0; i < obstacleCount; i++)
         {

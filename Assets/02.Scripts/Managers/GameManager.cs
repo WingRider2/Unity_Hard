@@ -6,8 +6,9 @@ public class GameManager : Singleton<GameManager>
 {
     public bool IsPaused { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         PauseGame();
     }
     public void PauseGame()
