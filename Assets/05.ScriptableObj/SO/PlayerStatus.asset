@@ -21,5 +21,5 @@ MonoBehaviour:
   curExp: 0
   maxExp: 100
   curStage: 1
-  attackSpeed: 1
+  attackSpeed: 0.5
   attackRange: 3

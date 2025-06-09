@@ -25,6 +25,8 @@ public enum PoolType
     LegendaryProjectile,
 
     Obstacle,
+
+    Enemy,
 }
 
 public enum Tag

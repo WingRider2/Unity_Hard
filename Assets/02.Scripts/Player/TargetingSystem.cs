@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class TargetingSystem : MonoBehaviour
 {
+    private List<GameObject> Enemys;
 
-    public GameObject FindTarget()
+    private void Start()
     {
-        //var enemies = monsterManager.Monsters; // 후에 몬스터 생성 혹은 사망할때 관리;
-        var Enemys = GameObject.FindGameObjectsWithTag("Enemy"); // 임시
-        
+        Enemys = StageManager.Instance.Enemys; // 후에 몬스터 생성 혹은 사망할때 관리;
+    }
+    public GameObject FindTarget()
+    {      
+       
         GameObject nearest = null;
         float minDist = Mathf.Infinity;
 

@@ -14,7 +14,7 @@ public class ProjectileController : MonoBehaviour,IPoolObject
     private ProjectileData _projectileData;
     public int ProjectileID;
     
-
+    public 
     Rigidbody rigid;
     PoolManager poolManager;
     private void Awake()

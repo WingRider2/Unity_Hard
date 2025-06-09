@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1790790402654359537}
   - component: {fileID: 3012797805654163241}
   m_Layer: 0
-  m_Name: Eneme
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 10
+  poolType: 7
+  poolSize: 10
 --- !u!54 &3012797805654163241
 Rigidbody:
   m_ObjectHideFlags: 0

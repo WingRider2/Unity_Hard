@@ -23,16 +23,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 lookRot;    
 
-    
 
-
-    private void Awake()
-    {
-        playerStatus = PlayerManager.Instance.runtimeStatus;
-        agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = playerStatus.attackRange;
-        agent.speed = playerStatus.speed;
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +40,12 @@ public class PlayerController : MonoBehaviour
         deadState = new DeadState();
 
         stateMachine.ChangeState(chaseState);
+
+
+        playerStatus = PlayerManager.Instance.runtimeStatus;
+        agent = GetComponent<NavMeshAgent>();
+        agent.stoppingDistance = playerStatus.attackRange;
+        agent.speed = playerStatus.speed;
     }
 
     // Update is called once per frame

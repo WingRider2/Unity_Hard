@@ -23,16 +23,14 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI Stage;
     public TextMeshProUGUI Gold;
 
-    private ObstacleManager obstacleManager;
-
-    
+    private StageManager stageManager;    
 
     public Action reset;
 
     private void Start()
     {
-        obstacleManager = ObstacleManager.Instance;
         gameManager = GameManager.Instance;
+        stageManager = StageManager.Instance;
         playerStatus = PlayerManager.Instance.runtimeStatus;
 
         playerStatus.OnHPChanged += HPChanged;
@@ -56,9 +54,10 @@ public class UIManager : Singleton<UIManager>
             UnityEngine.Random.InitState(Seed.text.GetHashCode());
         }
 
-        obstacleManager.ClearObstacle();
-        obstacleManager.GenerateObstacle();
-
+        //obstacleManager.ClearObstacle();
+        //obstacleManager.GenerateObstacle();
+        stageManager.ResetStage();
+        stageManager.CreatStage();
 
         reset?.Invoke();
 

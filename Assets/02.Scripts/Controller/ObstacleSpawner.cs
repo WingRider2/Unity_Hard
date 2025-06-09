@@ -3,29 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
-public class ObstacleManager : Singleton<ObstacleManager>
+public class ObstacleSpawner : MonoBehaviour
 {
     private PoolManager poolManager;
+
+    public bool[,] isPlace = new bool[10, 10];
 
     public int width;
     public int height;
     public Transform Ground;
 
-    public bool[,] isPlace = new bool[10,10];
+    
     public int obstacleCount;
     public List<GameObject> gameObjects;
 
     void Start()
     {
-        poolManager = PoolManager.Instance;
-        
+        poolManager = PoolManager.Instance;        
         gameObjects = new List<GameObject>();
     }
 
     public void GenerateObstacle()
     {
+        if (poolManager == null) poolManager = PoolManager.Instance;
+
+
         isPlace = new bool[width, height];
-        obstacleCount = Random.Range(5, width * height / 10);
+        obstacleCount = Random.Range(5, width * height / 10);        
 
         for (int i = 0; i < obstacleCount; i++)
         {
