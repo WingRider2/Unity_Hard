@@ -19,8 +19,7 @@ public class ProjectileController : MonoBehaviour,IPoolObject
     PoolManager poolManager;
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody>();
-        _projectileData = TableManager.Instance.GetTable<ProjectileTable>().GetDataByID(ProjectileID);
+        rigid = GetComponent<Rigidbody>();        
     }
    
     void Start()
@@ -40,6 +39,14 @@ public class ProjectileController : MonoBehaviour,IPoolObject
 
     public void Launch(Vector3 direction)
     {
+        _projectileData = DataManager.Instance.getData(ProjectileID);
         rigid.velocity = direction.normalized * _projectileData.projectileSpeed;
+        StartCoroutine(LaunchDelayDestroy(5.0f));
+    }
+
+    IEnumerator LaunchDelayDestroy(float time =0)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        poolManager.ReturnObject(this);
     }
 }

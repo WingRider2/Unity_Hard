@@ -148,4 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolType: 2
   poolSize: 10
-  ProjectileID: 1
+  ProjectileID: 2
+  rigid: {fileID: 0}

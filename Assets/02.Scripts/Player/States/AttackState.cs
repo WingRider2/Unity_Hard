@@ -33,7 +33,7 @@ public class AttackState : IState
 
     public PlayerState Update()
     {
-        if (!Controller.target.gameObject.activeInHierarchy)
+        if (Controller.target == null || !Controller.target.activeInHierarchy)
         {
             Controller.Findtarget();
             return PlayerState.Chase;
@@ -46,7 +46,7 @@ public class AttackState : IState
         while (true)
         {
             yield return new WaitForSeconds(Controller.playerStatus.attackSpeed);
-            GameObject poolGo = PoolManager.Instance.GetObject(PoolType.CommonProjectile);
+            GameObject poolGo = PoolManager.Instance.GetObject(Controller.poolType);
             poolGo.transform.position = Controller.transform.position + (Controller.curtarget.position - Controller.transform.position).normalized;
             if (poolGo.transform.TryGetComponent<ProjectileController>(out var projectileController))
             {

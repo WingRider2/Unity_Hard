@@ -16,6 +16,9 @@ public class ProjectileData
     public int UpgradeLevel;
 
     public float projectileSpeed;
+
+    public PoolType poolType;
+    public Sprite icon;
     public void Upgrade()
     {
         UpgradeLevel++;

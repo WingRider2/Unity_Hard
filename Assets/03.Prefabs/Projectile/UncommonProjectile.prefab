@@ -149,3 +149,4 @@ MonoBehaviour:
   poolType: 1
   poolSize: 10
   ProjectileID: 1
+  rigid: {fileID: 0}

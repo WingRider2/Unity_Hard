@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
     public GameObject target;
     public Transform curtarget;
 
-    public Vector3 lookRot;    
-
+    public Vector3 lookRot;
+    public PoolType poolType;
 
     // Start is called before the first frame update
     void Start()
