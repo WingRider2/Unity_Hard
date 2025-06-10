@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TargetingSystem : MonoBehaviour
 {
-    private List<GameObject> Enemys;
+    public List<GameObject> Enemys;
 
     private void Start()
     {
@@ -13,7 +13,14 @@ public class TargetingSystem : MonoBehaviour
     }
     public GameObject FindTarget()
     {
-        Enemys = Enemys.Where(e => e != null && e.activeInHierarchy).ToList();
+        //Enemys = Enemys.Where(e => e != null && e.activeInHierarchy).ToList();
+
+        if (Enemys.Count == 0)
+        {
+            GameManager.Instance.ClearStage();
+            Enemys = StageManager.Instance.Enemys;
+            return null;
+        }
 
         GameObject nearest = null;
         float minDist = Mathf.Infinity;
@@ -35,7 +42,7 @@ public class TargetingSystem : MonoBehaviour
         if (nearest == null)
         {
             Debug.Log("적없음");
-            GameManager.Instance.ClearStage();
+            
         }
         return nearest;
     }

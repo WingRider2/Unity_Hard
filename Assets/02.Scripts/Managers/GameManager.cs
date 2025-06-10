@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public bool IsPaused { get; private set; }
+    public bool IsCreateStage ;
 
     protected override void Awake()
     {
@@ -21,6 +22,7 @@ public class GameManager : Singleton<GameManager>
     {
         IsPaused = false;
         Time.timeScale = 1f;
+        IsCreateStage = true;
     }
 
     public void TogglePause()
@@ -31,10 +33,16 @@ public class GameManager : Singleton<GameManager>
 
     public void ClearStage()
     {
-        PauseGame();
-        PlayerManager.Instance.runtimeStatus.curStage++;
-        StageManager.Instance.ResetStage();
-        StageManager.Instance.CreatStage();
-        ResumeGame();
+        if (IsCreateStage)
+        {
+            IsCreateStage = false;
+            Debug.Log("초기화");
+            PauseGame();
+            PlayerManager.Instance.runtimeStatus.ChangedStage();
+            StageManager.Instance.ResetStage();
+            StageManager.Instance.CreatStage();
+            ResumeGame();
+        }
+
     }
 }

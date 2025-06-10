@@ -104,15 +104,10 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Move();
         if (stateMachine != null) stateMachine.PhysicsUpdate();
     }
 
 
-    void Move()
-    {
-        if(target !=null) agent.SetDestination(target.transform.position);
-    }
     public void Findtarget()
     {
         target = targetingSystem.FindTarget();

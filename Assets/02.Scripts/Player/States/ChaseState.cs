@@ -57,6 +57,10 @@ public class ChaseState : IState
             }
 
         }
-         return PlayerState.None;
+        else
+        {
+            Controller.agent.SetDestination(target.transform.position);
+        }
+        return PlayerState.None;
     }
 }
