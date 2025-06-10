@@ -28,4 +28,13 @@ public class GameManager : Singleton<GameManager>
         if (IsPaused) ResumeGame();
         else PauseGame();
     }
+
+    public void ClearStage()
+    {
+        PauseGame();
+        PlayerManager.Instance.runtimeStatus.curStage++;
+        StageManager.Instance.ResetStage();
+        StageManager.Instance.CreatStage();
+        ResumeGame();
+    }
 }

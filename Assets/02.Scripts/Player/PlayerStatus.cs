@@ -15,7 +15,7 @@ public class PlayerStatus : ScriptableObject
     public int Level;
     public float curExp;
     public float maxExp;
-    public float curStage;
+    public int curStage;
     public BigInteger Gold;
 
     public float attackSpeed;

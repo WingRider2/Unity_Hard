@@ -48,5 +48,7 @@ public class ItemSlot : MonoBehaviour
 
         inventory.OnUpgrade = null;
         inventory.OnUpgrade += Upgrade;
+
+        inventory.UpgradePrice.text = item.UpgradePrice.ToString();
     }
 }

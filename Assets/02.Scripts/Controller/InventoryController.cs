@@ -9,9 +9,10 @@ public class InventoryController : MonoBehaviour
 {
     public Transform Inventory;
     public Transform Status;
-
-    public TextMeshProUGUI TitleText;
     public Button SwitchButton;
+    public bool isOnInventory = true;
+    public TextMeshProUGUI TitleText;
+
     public Button UpgradeButton;
 
     public ItemSlot[] slots;
@@ -21,6 +22,7 @@ public class InventoryController : MonoBehaviour
 
     public ProjectileData ProjectileData;
     public Action OnUpgrade;
+    public TextMeshProUGUI UpgradePrice;
     private void Start()
     {
         dataManager = DataManager.Instance;
@@ -35,13 +37,34 @@ public class InventoryController : MonoBehaviour
             slots[i].Set(dataManager.getData(dataManager.ProjectileDataKeys[i]));
         }
 
+        SwitchButton.onClick.RemoveAllListeners();
+        SwitchButton.onClick.AddListener(toggle);
+
         UpgradeButton.onClick.RemoveAllListeners();
         UpgradeButton.onClick.AddListener(onUpgradeBtn);
     }
 
     public void onUpgradeBtn()
     {
-        ProjectileData.Upgrade();
-        OnUpgrade?.Invoke();
+        if (PlayerManager.Instance.runtimeStatus.Gold >= ProjectileData.UpgradePrice)
+        {
+            ProjectileData.Upgrade();
+            OnUpgrade?.Invoke();
+
+            PlayerManager.Instance.runtimeStatus.ChangedGold(-ProjectileData.UpgradePrice);
+        }
+        else
+        {
+            Debug.Log("돈없다");
+        }
+
+    }
+    
+    public void toggle()
+    {
+        Inventory.gameObject.SetActive(!isOnInventory);
+        Status.gameObject.SetActive(isOnInventory);
+        TitleText.text = (isOnInventory ? "인벤토리" : "상태");
+        isOnInventory = !isOnInventory;
     }
 }

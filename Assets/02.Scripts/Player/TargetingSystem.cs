@@ -32,7 +32,11 @@ public class TargetingSystem : MonoBehaviour
             }
         }
 
-        if (nearest == null) Debug.Log("적없음");
+        if (nearest == null)
+        {
+            Debug.Log("적없음");
+            GameManager.Instance.ClearStage();
+        }
         return nearest;
     }
 }

@@ -22,7 +22,7 @@ public class StageManager : Singleton<StageManager>
     }
     public void CreatStage()
     {
-        int RandNum = Random.Range(1,9);
+        int RandNum = Random.Range(1,9+PlayerManager.Instance.runtimeStatus.curStage);
 
         for (int i = 0; i < RandNum; i++)
         {
