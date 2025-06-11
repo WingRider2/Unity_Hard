@@ -14,12 +14,19 @@ public class EnemyController : MonoBehaviour,IPoolObject
 
     public int PoolSize => poolSize;
 
+    public PlayerManager playerManager;
+    private void Start()
+    {
+        playerManager = PlayerManager.Instance;
+    }
     public void onHit(float Damage)
     {
         HP -= Damage;
         if (HP <= 0)
         {
             PoolManager.Instance.ReturnObject(this);
+            playerManager.runtimeStatus.ChangedEXP(10);
+            playerManager.runtimeStatus.ChangedGold(100000);
             PlayerManager.Instance.controller.Findtarget();
         }
     }

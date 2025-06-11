@@ -15,7 +15,7 @@ public class ProjectileController : MonoBehaviour,IPoolObject
     private ProjectileData _projectileData;
     public int ProjectileID;
 
-    public PlayerManager playerManager;
+    
     Rigidbody rigid;
     PoolManager poolManager;
     private void Awake()
@@ -25,8 +25,7 @@ public class ProjectileController : MonoBehaviour,IPoolObject
    
     void Start()
     {
-        poolManager = PoolManager.Instance;
-        playerManager = PlayerManager.Instance;
+        poolManager = PoolManager.Instance;        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -34,8 +33,6 @@ public class ProjectileController : MonoBehaviour,IPoolObject
         if(collision.transform.TryGetComponent<EnemyController>(out var enemyController))
         {
             enemyController.onHit(_projectileData.GetCurDmg());
-            playerManager.runtimeStatus.ChangedEXP(10);
-            playerManager.runtimeStatus.ChangedGold(100000);
             poolManager.ReturnObject(this);
         }
     }
