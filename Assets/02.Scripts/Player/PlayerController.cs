@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //테스트 코드
         if (Input.GetKeyDown(KeyCode.F1))
         {
             ChangedHP(-5);
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F4))
         {
-            ChangedStage();
+            GameManager.Instance.ClearStage();
         }
         if (Input.GetKeyDown(KeyCode.F5))
         {

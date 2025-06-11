@@ -55,10 +55,10 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemys.Count == 0) return;
 
-        //foreach (var item in enemys)
-        //{
-        //    item.GetComponent<EnemyController>().Retrun();
-        //}
+        foreach (var item in enemys)
+        {
+            item.GetComponent<EnemyController>().Retrun();
+        }
         enemys.Clear();
     }
 }

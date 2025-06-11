@@ -30,4 +30,8 @@ public class EnemyController : MonoBehaviour,IPoolObject
             PlayerManager.Instance.controller.Findtarget();
         }
     }
+    public void Retrun()
+    {
+        PoolManager.Instance.ReturnObject(this);
+    }
 }
