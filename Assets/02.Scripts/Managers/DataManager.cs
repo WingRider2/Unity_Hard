@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[DefaultExecutionOrder(-50)]
 public class DataManager : Singleton<DataManager>
 {
     public List<int> ProjectileDataKeys = new List<int>();

@@ -55,6 +55,11 @@ public class PlayerStatus : ScriptableObject
         curStage++;
         OnStageChanged?.Invoke();
     }
+    public void ChangedStage(int Stage)
+    {
+        curStage= Stage;
+        OnStageChanged?.Invoke();
+    }
 
     public void ChangedGold(BigInteger gold)
     {

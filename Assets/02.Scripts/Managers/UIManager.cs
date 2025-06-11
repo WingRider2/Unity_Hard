@@ -8,12 +8,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+
 public class UIManager : Singleton<UIManager>
 {
     private GameManager gameManager;
     private PlayerStatus playerStatus;
 
-    public TextMeshProUGUI Seed;
+    [SerializeField] private TMP_InputField seedField;
+    [SerializeField] private TMP_InputField StageInputField;
     public Button GameStart;
 
     public Image HPFill;
@@ -43,19 +45,35 @@ public class UIManager : Singleton<UIManager>
     }
     public void StartGame()
     {
-        if (Seed.text == "")
+        if (seedField.text == "")
         {
             int seed = UnityEngine.Random.Range(0, 10000);
             UnityEngine.Random.InitState(seed);
-            Seed.text = seed.ToString();
+            seedField.text = seed.ToString();
         }
         else
         {
-            UnityEngine.Random.InitState(Seed.text.GetHashCode());
+            UnityEngine.Random.InitState(seedField.text.GetHashCode());
         }
 
-        //obstacleManager.ClearObstacle();
-        //obstacleManager.GenerateObstacle();
+        if (StageInputField.text == "")
+        {
+            playerStatus.ChangedStage(1);
+        }
+        else
+        {
+            if (int.TryParse(StageInputField.text, out int value))
+            {
+                Debug.Log("입력된 값: " + value);
+                playerStatus.ChangedStage(value);
+            }
+            else
+            {
+                Debug.LogWarning("유효하지 않은 숫자 입력: " + StageInputField.text);
+            }
+            
+        }
+
         stageManager.ResetStage();
         stageManager.CreatStage();
 
