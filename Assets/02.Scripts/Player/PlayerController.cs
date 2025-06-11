@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            ChangeGold(5000);
+            ChangeGold(500000);
         }
 
 
@@ -111,8 +111,11 @@ public class PlayerController : MonoBehaviour
     public void Findtarget()
     {
         target = targetingSystem.FindTarget();
-        curtarget = target.transform;
-        chaseState.target = target;
+        if (target != null)
+        {
+            curtarget = target.transform;
+            chaseState.target = target;
+        }
     }
     public void ChangedHP(float dmg)
     {

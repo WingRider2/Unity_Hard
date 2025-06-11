@@ -13,7 +13,6 @@ public class TargetingSystem : MonoBehaviour
     }
     public GameObject FindTarget()
     {
-        //Enemys = Enemys.Where(e => e != null && e.activeInHierarchy).ToList();
 
         if (Enemys.Count == 0)
         {
@@ -24,12 +23,10 @@ public class TargetingSystem : MonoBehaviour
 
         GameObject nearest = null;
         float minDist = Mathf.Infinity;
+
+        Enemys.RemoveAll(enemy => !enemy.activeInHierarchy);
         foreach (var enemy in Enemys)
         {
-            if (!enemy.activeInHierarchy)
-            {
-                Enemys.Remove(enemy);
-            }
 
             float dist = Vector3.Distance(transform.position, enemy.transform.position);
             if (dist < minDist)

@@ -18,6 +18,7 @@ public class PlayerStatus : ScriptableObject
     public int curStage;
     public BigInteger Gold;
 
+    public string[] GoldUnit;//임시
     public float attackSpeed;
     public float attackRange;
 
@@ -65,5 +66,16 @@ public class PlayerStatus : ScriptableObject
     {
         Gold+= gold;
         OnGoldChanged?.Invoke();
+    }
+    public string getGold()
+    {
+        int unit = 0;
+        BigInteger temp = Gold;
+        while (temp >= 1000)
+        {
+            temp = temp / 1000;
+            unit++;
+        }
+        return temp.ToString()+ GoldUnit[unit];
     }
 }

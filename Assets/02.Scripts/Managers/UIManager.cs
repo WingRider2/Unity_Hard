@@ -98,10 +98,9 @@ public class UIManager : Singleton<UIManager>
     {
         Stage.text = $"Stage : {playerStatus.curStage}";
     }
-
     public void GoldChanged()
     {
-        Gold.text = playerStatus.Gold.ToString();
+        Gold.text = playerStatus.getGold();
     }
 
     public void OnDisable()

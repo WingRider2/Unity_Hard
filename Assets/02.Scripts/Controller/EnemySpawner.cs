@@ -19,14 +19,13 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        poolManager = PoolManager.Instance;
-        enemys = new List<GameObject>();
+        poolManager = PoolManager.Instance;        
     }
 
     public void GenerateEnemy()
     {
         if (poolManager == null) poolManager = PoolManager.Instance;
-
+        if(enemys.Count == 0) enemys = new List<GameObject>();
         obstacleSpawne = transform.GetComponent<ObstacleSpawner>();
         isPlace = obstacleSpawne.isPlace;
         Ground = obstacleSpawne.Ground;
@@ -56,10 +55,10 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemys.Count == 0) return;
 
-        foreach (var item in enemys)
-        {
-            item.GetComponent<ObstacleController>().Retrun();
-        }
+        //foreach (var item in enemys)
+        //{
+        //    item.GetComponent<EnemyController>().Retrun();
+        //}
         enemys.Clear();
     }
 }

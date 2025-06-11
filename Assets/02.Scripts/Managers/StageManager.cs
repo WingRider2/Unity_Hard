@@ -20,6 +20,7 @@ public class StageManager : Singleton<StageManager>
     {
         surface = GetComponent<NavMeshSurface>();
     }
+
     public void CreatStage()
     {
         int RandNum = Random.Range(1,9+PlayerManager.Instance.runtimeStatus.curStage);

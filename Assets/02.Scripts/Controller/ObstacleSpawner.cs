@@ -19,14 +19,13 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Start()
     {
-        poolManager = PoolManager.Instance;        
-        gameObjects = new List<GameObject>();
+        poolManager = PoolManager.Instance;                
     }
 
     public void GenerateObstacle()
     {
         if (poolManager == null) poolManager = PoolManager.Instance;
-
+        if(gameObjects.Count == 0) gameObjects = new List<GameObject>();
 
         isPlace = new bool[width, height];
         obstacleCount = Random.Range(5, width * height / 20);        
